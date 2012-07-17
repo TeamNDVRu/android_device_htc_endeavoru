@@ -133,6 +133,7 @@ PRODUCT_PACKAGES += \
 
 # a2dp
 PRODUCT_PACKAGES += \
+	audio.primary.endeavoru \
 	audio.a2dp.default \
 	audio.usb.default \
         audio.primary.tegra \
