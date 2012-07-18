@@ -133,6 +133,7 @@ PRODUCT_PACKAGES += \
 
 # a2dp
 PRODUCT_PACKAGES += \
+	audio_policy.endeavoru \
 	audio.primary.endeavoru \
 	audio.a2dp.default \
 	audio.usb.default \
@@ -148,7 +149,10 @@ PRODUCT_PACKAGES += \
         t3_calld
 
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/audio/audio.legacy.endeavoru.so:system/lib/hw/audio.legacy.endeavoru.so
+	$(LOCAL_PATH)/audio/audio.legacy.endeavoru.so:system/lib/hw/audio.legacy.endeavoru.so \
+	$(LOCAL_PATH)/audio_policy/audio_policy_legacy.endeavoru.so:system/lib/hw/audio_policy_legacy.endeavoru.so
+
+
 
 #NFC
 PRODUCT_PACKAGES += \

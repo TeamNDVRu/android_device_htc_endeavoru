@@ -46,8 +46,9 @@ TARGET_TEGRA_VERSION := t30
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/htc/endeavoru/configs/egl.cfg
 
-# HTC ril compatability
-AUDIO_DISABLE_MIXER_TIMESTAMP_CHECK := true
+
+# Audio
+AUDIO_LEGACY_COMPAT_TEMP := true
 
 # Wi-Fi
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
