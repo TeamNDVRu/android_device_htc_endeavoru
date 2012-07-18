@@ -147,6 +147,9 @@ PRODUCT_PACKAGES += \
         eventd \
         t3_calld
 
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/audio/audio.legacy.endeavoru.so:system/lib/hw/audio.legacy.endeavoru.so
+
 #NFC
 PRODUCT_PACKAGES += \
 	libnfc \
