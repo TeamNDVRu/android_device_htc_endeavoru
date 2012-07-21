@@ -64,8 +64,6 @@ ro.ril.devicename=/dev/ttyACM1
 
 # Wi-Fi
 wifi.interface=wlan0
-wifi.softap.interface=wlan0
-wifi.softapconcurrent.interface=wlan0
 wifi.supplicant_scan_interval=60
 
 init.svc.wpa_supplicant=
