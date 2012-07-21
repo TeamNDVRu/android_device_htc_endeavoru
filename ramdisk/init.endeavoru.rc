@@ -236,7 +236,7 @@ on boot
     chown media audio /data/audio
     start call_vol1
     start call_vol2
- 
+
 # compass/accelerometer daemon
 service akmd /system/bin/akmd
     class main
@@ -400,16 +400,6 @@ service dx_drm_server /system/bin/DxDrmServerIpc -f -o allow_other /data/DxDrm/f
     class main
 # Discretix DRM change end
 
-# OMA DRM change start
-service fusermount /system/bin/fusermount -u /data/htcfs
-    disabled
-    oneshot
-
-service htcfs /system/bin/htcfs /data/htcfs -f -o allow_other
-    class main
-    onrestart restart fusermount
-# OMA DRM change end
-
 # create filesystems if necessary
 service setup_fs /system/bin/setup_fs \
         /dev/block/platform/sdhci-tegra.3/by-name/UDA \
@@ -437,8 +427,6 @@ service call_vol1 /system/bin/eventd
 service call_vol2 /system/bin/t3_calld
 	class main
 	user root
-
-
 
 on property:init.svc.bootanim=stopped
     write /sys/kernel/debug/tegra_hotplug/max_cpus 4

@@ -80,7 +80,6 @@ PRODUCT_COPY_FILES += \
 
 # Media configs
 PRODUCT_COPY_FILES += \
-    device/htc/endeavoru/audio_policy.conf:system/etc/audio_policy.conf \
     device/htc/endeavoru/mixer_paths.xml:system/etc/mixer_paths.xml \
     device/htc/endeavoru/media_codecs.xml:system/etc/media_codecs.xml
 
@@ -131,15 +130,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
         lights.tegra
 
-# a2dp
+# Audio
 PRODUCT_PACKAGES += \
-	audio_policy.endeavoru \
-	audio.primary.endeavoru \
 	audio.a2dp.default \
 	audio.usb.default \
-        audio.primary.tegra \
         libaudioutils \
-        libtinyalsa \
+        libtinyalsa
+
+# Common
+PRODUCT_PACKAGES += \
 	make_ext4fs \
 	setup_fs \
 	l2ping \
@@ -147,12 +146,6 @@ PRODUCT_PACKAGES += \
 	whisperd \
         eventd \
         t3_calld
-
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/audio/audio.legacy.endeavoru.so:system/lib/hw/audio.legacy.endeavoru.so \
-	$(LOCAL_PATH)/audio_policy/audio_policy_legacy.endeavoru.so:system/lib/hw/audio_policy_legacy.endeavoru.so
-
-
 
 #NFC
 PRODUCT_PACKAGES += \
@@ -174,6 +167,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
+
+# Torch
+PRODUCT_PACKAGES += \
+        Torch
 
 # for bugmailer
 ifneq ($(TARGET_BUILD_VARIANT),user)

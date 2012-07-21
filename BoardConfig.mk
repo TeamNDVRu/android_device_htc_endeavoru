@@ -20,15 +20,16 @@ BOARD_SKIP_ANDROID_DOC_BUILD := true
 # Audio
 BOARD_USES_GENERIC_AUDIO := false
 BOARD_USES_ALSA_AUDIO := false
+COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 
 #Camera
 USE_CAMERA_STUB := false
+BOARD_NEEDS_MEMORYHEAPPMEM := true
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 
 # Target arch settings
 BOARD_HAS_LOCKED_BOOTLOADER := true
 TARGET_NO_BOOTLOADER := true
-
-# cpu info
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -46,10 +47,6 @@ TARGET_TEGRA_VERSION := t30
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/htc/endeavoru/configs/egl.cfg
 
-
-# Audio
-AUDIO_LEGACY_COMPAT_TEMP := true
-
 # Wi-Fi
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION := VER_0_8_X
@@ -66,6 +63,7 @@ COMMON_GLOBAL_CFLAGS += -DUSES_TI_MAC80211
 BOARD_HAVE_BLUETOOTH := true
 
 # HTC ril compatability
+BOARD_FORCE_RILD_AS_ROOT := true
 TARGET_PROVIDES_LIBRIL := vendor/htc/endeavoru/proprietary/lib/libhtc-ril.so
 
 # Avoid the generation of ldrcc instructions
