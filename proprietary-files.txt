@@ -1,5 +1,4 @@
 # ril
-lib/libril.so
 lib/libhtc_ril.so
 
 # nfc
@@ -70,11 +69,6 @@ bin/gsm0710muxd
 bin/mknod
 etc/Flash_Loader.conf
 etc/QUO_6260.fls.clean
-
-# FM Radio
-lib/libfmchr.so
-lib/libfmradio.so
-lib/libfmstack.so
 
 # graphics
 lib/libcgdrv.so
