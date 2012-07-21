@@ -5,9 +5,11 @@ on early-init
     write /sys/class/firmware/timeout 5
 
     # for backwards compatibility
-    export EXTERNAL_STORAGE /mnt/sdcard
-    mkdir /mnt/sdcard 0775 system system
-    symlink /mnt/sdcard /sdcard
+    export EXTERNAL_STORAGE /storage/sdcard0
+    mkdir /storage 0050 system sdcard_r
+    mkdir /storage/sdcard0 0000 system system
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
 
 on emmc-fs
     mount ext4 /dev/block/mmcblk0p12 /system wait rw
