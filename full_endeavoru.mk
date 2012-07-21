@@ -124,7 +124,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
          calibrator \
          hostapd_cli \
-         hostapd
+         hostapd \
+         libnl_2
 
 # lights
 PRODUCT_PACKAGES += \
@@ -165,8 +166,8 @@ PRODUCT_PACKAGES += \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-    make_ext4fs \
-    setup_fs
+	make_ext4fs \
+	setup_fs
 
 # Torch
 PRODUCT_PACKAGES += \
