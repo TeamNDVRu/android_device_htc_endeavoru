@@ -22,6 +22,7 @@
 <resources>
     <!-- Disable face detection on the front camera -->
     <bool name="noFaceDetectOnFrontCamera">true</bool>
+    <bool name="noFaceDetectOnRearCamera">true</bool>
     <!-- Use ZSL mode -->
     <bool name="enableZSL">true</bool>
 </resources>
