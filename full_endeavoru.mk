@@ -131,6 +131,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
         lights.tegra
 
+# Power
+PRODUCT_PACKAGES += \
+        power.endeavoru
+
 # Audio
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
