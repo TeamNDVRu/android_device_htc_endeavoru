@@ -51,6 +51,7 @@ int isInCall()
 
 }
 
+static int in_call_polly = 0;
 
 int main()
 {
@@ -80,6 +81,11 @@ int main()
 		{
 			if (isInCall())
 			{
+				if (in_call_polly == 0)
+				{
+				    system("/system/bin/polly");
+				    in_call_polly = 1;
+				}
 				volumeNeedReset = 1;
 				char line [ 128 ]; 
 				if ( fgets ( line, sizeof line, vol_file ) != NULL )
@@ -90,6 +96,7 @@ int main()
 				}
 			} else
 			{
+				in_call_polly = 0;
 				if (volumeNeedReset)
 				{
 					// no call, but vol_file present: delete it and set overall volume to max

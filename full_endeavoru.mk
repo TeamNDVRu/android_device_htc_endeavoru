@@ -74,6 +74,10 @@ PRODUCT_COPY_FILES += \
 	device/htc/endeavoru/usr/share/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
 	device/htc/endeavoru/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
 
+# polly - echo fix by pabx @ xda Adrian Ulrich <adrian@blinkenlights.ch>
+PRODUCT_COPY_FILES += \
+	device/htc/endeavoru/prebuilt/bin/polly:system/bin/polly
+
 # Vold.fstab
 PRODUCT_COPY_FILES += \
 	device/htc/endeavoru/vold.fstab:system/etc/vold.fstab
