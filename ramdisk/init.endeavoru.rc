@@ -259,6 +259,13 @@ service init-acmx2 /system/bin/chmod 777 /dev/ttyACMX0
     class core
     oneshot
 
+service poweron_modem /system/bin/poweron_modem_fls.sh /data/modem_work/
+    class main
+    user root
+    group root
+    oneshot
+    disabled
+
 service uim /system/bin/uim-sysfs
     class core
     user root
