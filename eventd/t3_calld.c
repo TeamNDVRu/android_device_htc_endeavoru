@@ -83,7 +83,7 @@ int main()
 			{
 				if (in_call_polly == 0)
 				{
-				    system("/system/bin/polly");
+				    system("/system/bin/pollyd");
 				    in_call_polly = 1;
 				}
 				volumeNeedReset = 1;
