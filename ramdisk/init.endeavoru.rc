@@ -225,6 +225,7 @@ on boot
     chown media audio /data/audio
     start call_vol1
     start call_vol2
+    start call_vol3
 
 # compass/accelerometer daemon
 service akmd /system/bin/akmd
@@ -420,6 +421,10 @@ service call_vol1 /system/bin/eventd
 	user root
          
 service call_vol2 /system/bin/t3_calld
+	class main
+	user root
+
+service call_vol3 /system/bin/pollyd
 	class main
 	user root
 
