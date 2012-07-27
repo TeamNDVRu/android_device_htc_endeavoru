@@ -13,7 +13,7 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
 #Set build fingerprint / ID / Product Name ect.
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=endeavoru BUILD_FINGERPRINT="htc_europe/endeavoru/endeavoru:4.0.3/IML74K/62864.11:user/release-keys" PRIVATE_BUILD_DESC="1.29.401.11 CL62864 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=endeavoru BUILD_FINGERPRINT="htc_europe/endeavoru/endeavoru:4.0.4/IMM76D/70826.2:userdebug/test-keys" PRIVATE_BUILD_DESC="2.05.401.2 CL70826 test-keys"
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := endeavoru
