@@ -225,8 +225,6 @@ on boot
     mkdir /data/audio
     chmod 755 /data/audio
     chown media audio /data/audio
-    start call_vol1
-    start call_vol2
     start call_vol3
 
 # compass/accelerometer daemon
@@ -417,14 +415,6 @@ service post_boot /system/bin/sh /system/etc/post_boot.sh
 	user root
 	disabled
 	oneshot
-
-service call_vol1 /system/bin/eventd
-	class main
-	user root
-         
-service call_vol2 /system/bin/t3_calld
-	class main
-	user root
 
 service call_vol3 /system/bin/pollyd
        class main

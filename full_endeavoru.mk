@@ -76,7 +76,8 @@ PRODUCT_COPY_FILES += \
 
 # pollyd - echo fix by pabx @ xda Adrian Ulrich <adrian@blinkenlights.ch>
 PRODUCT_PACKAGES += \
-	pollyd
+	pollyd \
+	Polly
 
 # Vold.fstab
 PRODUCT_COPY_FILES += \
@@ -151,9 +152,7 @@ PRODUCT_PACKAGES += \
 	setup_fs \
 	l2ping \
 	com.android.future.usb.accessory \
-	whisperd \
-        eventd \
-        t3_calld
+	whisperd
 
 #NFC
 PRODUCT_PACKAGES += \

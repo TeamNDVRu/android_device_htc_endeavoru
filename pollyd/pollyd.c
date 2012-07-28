@@ -23,6 +23,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <time.h>
+#include <signal.h>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -38,6 +39,7 @@ int main() {
 	char rbuff[GBUFFSIZE];
 	size_t bytes_read;
 	int atlen  = strlen(AT_PREFIX);
+	gid_t jgid;
 	
 	/* make socket unreadable */
 	umask( 0777 );
@@ -45,17 +47,20 @@ int main() {
 	/* get unix domain socket and pts */
 	afd = get_audio_socket();
 	pfd = get_pts_socket();
+	jgid= get_jpolly_gid();
 	
 	/* only allow write access to the media user */
-	chown(SOCKET_PATH, USER_MEDIA, GROUP_AUDIO);
-	chmod(SOCKET_PATH, S_IWUSR | S_IRUSR );
+	chown(SOCKET_PATH, USER_MEDIA, jgid);
+	chmod(SOCKET_PATH, S_IWUSR | S_IRUSR | S_IWGRP | S_IRGRP );
 	
 	/* drop root */
-	setgid(GROUP_AUDIO);
+	setgid(jgid);
 	setuid(USER_MEDIA);
 	if(setuid(0) != -1)
 		xdie("failed to drop root!");
 	
+	/* terminates process if modem is stuck */
+	signal(SIGALRM, suicide);
 	
 	DMSG("socket setup finished. afd=%d, pfd=%d", afd, pfd);
 	
@@ -76,7 +81,11 @@ int main() {
 		/* send command to modem if it looks ok */
 		if(bytes_read >= CALLVOLUME_CMDLEN &&
 		       at_args_sane(&rbuff[atlen], bytes_read+3-atlen) == 1) {
+			
+			alarm(AT_TIMEOUT);
 			send_xdrv_command(rbuff, pfd);
+			alarm(0);
+			
 		}
 		else {
 			DMSG("silently dropping invalid command with %d bytes len", bytes_read);
@@ -170,7 +179,7 @@ void send_xdrv_command(const char *cmd, int fd) {
 
 /*
 ** Try to grab a new pty
-** Returns an opened FD, -1 on error
+** Returns an opened FD, dies on error
 */
 int get_pts_socket() {
 	int i;
@@ -197,6 +206,32 @@ int get_pts_socket() {
 }
 
 
+
+/*
+** Try to figure out the GID android gave to the java polly helper
+** Dies on error
+*/
+gid_t get_jpolly_gid() {
+	struct stat xstat;
+	int r;
+	r = stat(JPOLLY_PATH, &xstat);
+	
+	if(r == -1 || xstat.st_gid < 10000) /* fixme: 10000: grab first possible app-gid from android includes */
+		xdie("failed to get gid of jpolly");
+	
+	return xstat.st_gid;
+}
+
+
+
+
+/*
+** Called by signal handler
+** -> fired if the modem is stuck
+*/
+void suicide(int sig) {
+	xdie("AT command timed out - terminating");
+}
 
 
 /*
