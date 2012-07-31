@@ -67,6 +67,7 @@ endif
 BOARD_HAVE_BLUETOOTH := true
 
 # HTC ril compatability
+BOARD_RILD_USES_MODULES := true
 BOARD_USE_NEW_LIBRIL_HTC := true
 TARGET_PROVIDES_LIBRIL := vendor/htc/endeavoru/proprietary/lib/libhtc-ril.so
 

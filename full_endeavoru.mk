@@ -125,6 +125,11 @@ PRODUCT_COPY_FILES += \
         device/htc/endeavoru/modules/wl12xx.ko:system/lib/modules/wl12xx.ko \
         device/htc/endeavoru/modules/wl12xx_sdio.ko:system/lib/modules/wl12xx_sdio.ko
 
+# rild modem scripts
+PRODUCT_COPY_FILES += \
+       device/htc/endeavoru/modem/start_modem.sh:system/bin/start_modem.sh \
+       device/htc/endeavoru/modem/poweron_modem_fls.sh:system/bin/poweron_modem_fls.sh
+
 # Hostapd
 PRODUCT_PACKAGES += \
          calibrator \
