@@ -24,6 +24,7 @@ COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 
 #Camera
 USE_CAMERA_STUB := false
+BOARD_HAVE_HTC_FFC := true
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 
@@ -67,7 +68,6 @@ endif
 BOARD_HAVE_BLUETOOTH := true
 
 # HTC ril compatability
-BOARD_RILD_USES_MODULES := true
 BOARD_USE_NEW_LIBRIL_HTC := true
 TARGET_PROVIDES_LIBRIL := vendor/htc/endeavoru/proprietary/lib/libhtc-ril.so
 

@@ -74,11 +74,6 @@ PRODUCT_COPY_FILES += \
 	device/htc/endeavoru/usr/share/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
 	device/htc/endeavoru/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
 
-# pollyd - echo fix by pabx @ xda Adrian Ulrich <adrian@blinkenlights.ch>
-PRODUCT_PACKAGES += \
-	pollyd \
-	Polly
-
 # Vold.fstab
 PRODUCT_COPY_FILES += \
 	device/htc/endeavoru/vold.fstab:system/etc/vold.fstab
@@ -120,26 +115,24 @@ PRODUCT_COPY_FILES += \
         device/htc/endeavoru/modules/rfcomm.ko:system/lib/modules/rfcomm.ko \
         device/htc/endeavoru/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
         device/htc/endeavoru/modules/st_drv.ko:system/lib/modules/st_drv.ko \
-        device/htc/endeavoru/modules/tcrypt.ko:system/lib/modules/tcrypt.ko \
         device/htc/endeavoru/modules/ti_hci_drv.ko:system/lib/modules/ti_hci_drv.ko \
         device/htc/endeavoru/modules/wl12xx.ko:system/lib/modules/wl12xx.ko \
         device/htc/endeavoru/modules/wl12xx_sdio.ko:system/lib/modules/wl12xx_sdio.ko
 
-# rild modem scripts
-PRODUCT_COPY_FILES += \
-       device/htc/endeavoru/modem/start_modem.sh:system/bin/start_modem.sh \
-       device/htc/endeavoru/modem/poweron_modem_fls.sh:system/bin/poweron_modem_fls.sh
+# Polly
+PRODUCT_PACKAGES += \
+	pollyd \
+	Polly
 
 # Hostapd
 PRODUCT_PACKAGES += \
          calibrator \
          hostapd_cli \
-         hostapd \
-         libnl_2
+         hostapd
 
 # lights
 PRODUCT_PACKAGES += \
-        lights.tegra
+        lights.endeavoru
 
 # Power
 PRODUCT_PACKAGES += \
@@ -159,7 +152,7 @@ PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory \
 	whisperd
 
-#NFC
+# NFC
 PRODUCT_PACKAGES += \
 	libnfc \
 	libnfc_ndef \
@@ -223,7 +216,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Tegra 3 spacific overrides
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.tegra.nvmmlite=1 \
-        ro.vendor.extension_library=/system/lib/libhtc-opt2.so \
         tf.enable=y
 
 # We have enough storage space to hold precise GC data

@@ -4,18 +4,18 @@ ro.opengles.version = 131072
 #
 #
 
-# Common display settings
+#Common display settings
 ro.sf.lcd_density=320
 debug.sf.hw=1
 persist.sys.ui.hw = 1
 windowsmgr.max_events_per_sec = 240
 
-# RIL
+#RIL
 rild.libpath=/system/lib/libhtc_ril.so
 rild.libargs=-e wwan0
 ro.telephony.ril.v3=signalstrength,skipbrokendatacall
 modem.power.device=/sys/class/gpio/gpio32/value,0,1
-ro.ril.devicename=/dev/ttyACM0
+ro.ril.devicename=/dev/ttyACM1
 modem.powercontrol=disabled
 ro.ril.ecc.VODA-Africa-South=112,911,999
 ro.ril.ecc.HTC-GCC=999,112,997
@@ -61,10 +61,9 @@ ro.ril.enable.imc.feature=1
 ro.ril.projectname=endeavoru
 ro.ril.stkprof.param=FFFFFFFF7F1C00DF9703021F2200000083000000000040100000000000000000
 
-# Wi-Fi
+#Wi-Fi
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=60
-
 init.svc.wpa_supplicant=
 init.svc.dhcpcd_wlan0=
 dhcp.wlan0.autoip=
@@ -86,7 +85,7 @@ net.wlan0.dns2=
 wifi.wpa_supp_ready=
 wlan.driver.status=
 
-# Audio
+#Audio
 # -----------------------------
 # speaker volume is from 20 to 31
 # this corresponds to -2dB to +8dB
@@ -129,8 +128,10 @@ persist.audio.AutoSwitchMic=1
 debug.nfc.fw_download=true
 debug.nfc.se=true
 
-#hdmi
+#HDMI
 ro.hdmi.enable=true
+# temporary fix for HDMI output, for videos it works now in correct landscape with this set
+persist.demo.hdmirotation=portrait
 
 #Internal Storage
 ro.phone_fat=1
@@ -138,7 +139,7 @@ ro.phone_fat=1
 #Fat Rsvd Sectors
 ro.fat_rsvd=66
 
-# Support HW reset dialog
+#Support HW reset dialog
 ro.product.hwreset = 1
 ro.product.hwreset.timer1 = 5
 ro.product.hwreset.timer2 = 8
@@ -147,6 +148,3 @@ ro.product.hwreset.timer2 = 8
 ro.bt.chipset = TI 1283
 ro.bt.stack = TI BlueZ
 ro.bt.stack.version = 1.1.0.3
-
-# temporary fix for HDMI output, for videos it works now in correct landscape with this set
-persist.demo.hdmirotation=portrait

@@ -1,5 +1,5 @@
 # ril
-bin/rild
+lib/libril.so
 lib/libhtc_ril.so
 
 # nfc
@@ -10,7 +10,6 @@ lib/libpn544_fw.so
 usr/keylayout/tegra-kbc.kl
 
 # agps
-bin/agpsd
 bin/RXN_IntApp
 etc/gps/agps.truststore
 etc/gps/agps.truststore_lab
@@ -30,7 +29,6 @@ bin/navl_server
 bin/cplc_main
 bin/GPSCConfigFile.cfg
 bin/pathconfigfile.txt
-app/PGPSDownloader.apk
 
 # uim (bluetooth, fm, etc,.)
 bin/uim-sysfs
@@ -73,6 +71,11 @@ bin/mknod
 etc/Flash_Loader.conf
 etc/QUO_6260.fls.clean
 
+# FM Radio
+lib/libfmchr.so
+lib/libfmradio.so
+lib/libfmstack.so
+
 # graphics
 lib/libcgdrv.so
 lib/libnvos.so
@@ -99,14 +102,8 @@ lib/libnvwinsys.so
 lib/libnvwsi.so
 
 # sound
-bin/alsa_amixer
-bin/alsa_aplay
-bin/alsa_ctl
-bin/rfaudio
-bin/snd3008
 lib/libasound.so
-lib/libcall_volume.so
-lib/libbt-aptx-4.0.3.so
+
 
 # egl
 lib/egl/libEGL_tegra.so
@@ -115,6 +112,8 @@ lib/egl/libGLESv1_CM_perfhud.so
 lib/egl/libGLESv1_CM_tegra.so
 lib/egl/libGLESv2_perfhud.so
 lib/egl/libGLESv2_tegra.so
+
+lib/libsensors_mpl.so
 
 # nv firmware
 etc/firmware/nvavp_os_00001000.bin
@@ -199,10 +198,6 @@ lib/libnvapputil.so
 lib/libnvasfparserhal.so
 lib/libnvaviparserhal.so
 lib/libnvavp.so
-lib/libsurfaceflinger_client.so
-lib/libhtcsunny2engine.so
-lib/libhtcsunnyengine.so
-lib/libhtcsurfaces.so
 
 # soundimage
 etc/soundimage/CodecDSPID.txt
@@ -252,13 +247,18 @@ lib/libhtc_dis.so
 
 # lib/libhtc*
 lib/libhtc-opt2.so
+lib/libhtcsunny2engine.so
+lib/libhtcsunnyengine.so
+lib/libhtcsurfaces.so
 
-# Sensors
+# audio
+lib/libcall_volume.so
+lib/libbt-aptx-4.0.3.so
+
 lib/libmllite.so
 lib/libmlplatform.so
 lib/libmpl.so
 lib/libmpl_jni.so
-lib/libsensors_mpl.so
 
 lib/hw/camera.tegra.so
 lib/hw/gralloc.tegra.so
@@ -270,11 +270,4 @@ lib/hw/hwcomposer.tegra.so
 lib/hw/nfc.endeavoru.so
 lib/hw/sensors.endeavoru.so
 
-# DRM
-lib/drm/libdrmwvmplugin.so
-lib/libvorbisencoder.so
-lib/libwvdrm_L1.so
-lib/libwvm.so
-lib/libWVStreamControlAPI_L1.so
-lib/
-
+app/PGPSDownloader.apk
