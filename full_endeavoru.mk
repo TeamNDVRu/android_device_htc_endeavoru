@@ -128,8 +128,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
          calibrator \
          hostapd_cli \
-         hostapd \
-	 iw
+         hostapd
 
 # lights
 PRODUCT_PACKAGES += \
