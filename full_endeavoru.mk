@@ -21,7 +21,8 @@ DEVICE_PACKAGE_OVERLAYS := device/htc/endeavoru/overlay
 
 # Camera
 PRODUCT_PACKAGES := \
-    Camera
+    Camera \
+    camera.tegra
 
 # Files needed for boot image
 PRODUCT_COPY_FILES := \
