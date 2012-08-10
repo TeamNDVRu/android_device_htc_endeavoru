@@ -6,6 +6,8 @@ ro.opengles.version = 131072
 
 #Common display settings
 ro.sf.lcd_density=320
+ro.hwui.text_cache_width=2048
+ro.hwui.text_cache_height=256
 debug.sf.hw=1
 persist.sys.ui.hw = 1
 windowsmgr.max_events_per_sec = 240
@@ -37,7 +39,7 @@ ro.ril.fast.dormancy.rule=1
 ro.ril.disable.fd.plmn.prefix=23402,23410,23411,23420,27202
 ro.ril.enable.managed.roaming=1
 ro.ril.enable.sdr=1
-ro.ril.enable.amr.wideband=0
+ro.ril.enable.amr.wideband=1
 ro.ril.enable.r8fd=0
 ro.ril.disable.cpc=1
 ro.ril.fd.pre_r8_tout.scr_off=2
