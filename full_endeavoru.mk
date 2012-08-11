@@ -19,11 +19,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 DEVICE_PACKAGE_OVERLAYS := device/htc/endeavoru/overlay
 
-# Camera
-PRODUCT_PACKAGES := \
-    Camera \
-    camera.tegra
-
 # Files needed for boot image
 PRODUCT_COPY_FILES := \
 	device/htc/endeavoru/ramdisk/init.rc:root/init.rc \
@@ -34,7 +29,7 @@ PRODUCT_COPY_FILES := \
 	device/htc/endeavoru/ramdisk/init:root/init
 
 
-# Prebuilt Audio/GPS/Camera/Wi-Fi configs
+# Prebuilt Audio/GPS/Camera configs
 PRODUCT_COPY_FILES += \
 	device/htc/endeavoru/dsp/asound.conf:system/etc/asound.conf \
 	device/htc/endeavoru/dsp/AIC3008_REG_DualMic_XC.csv:system/etc/AIC3008_REG_DualMic_XC.csv \
@@ -44,12 +39,7 @@ PRODUCT_COPY_FILES += \
         device/htc/endeavoru/configs/media_profiles.xml:system/etc/media_profiles.xml \
         device/htc/endeavoru/configs/enctune.conf:system/etc/enctune.conf \
 	device/htc/endeavoru/configs/gps.conf:system/etc/gps.conf \
-	device/htc/endeavoru/configs/SuplRootCert:system/etc/SuplRootCert \
-	device/htc/endeavoru/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-	device/htc/endeavoru/configs/hostapd.conf:system/etc/wifi/hostapd.conf \
-	device/htc/endeavoru/configs/TQS_D_1.7.ini:system/etc/wifi/TQS_D_1.7.ini \
-	device/htc/endeavoru/configs/htc_1281fw.bin:system/etc/wifi/htc_1281fw.bin \
-	device/htc/endeavoru/configs/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
+	device/htc/endeavoru/configs/SuplRootCert:system/etc/SuplRootCert
 
 # BT config
 PRODUCT_COPY_FILES += \
@@ -119,23 +109,44 @@ PRODUCT_COPY_FILES += \
         device/htc/endeavoru/modules/wl12xx.ko:system/lib/modules/wl12xx.ko \
         device/htc/endeavoru/modules/wl12xx_sdio.ko:system/lib/modules/wl12xx_sdio.ko
 
+# Camera
+PRODUCT_PACKAGES := \
+    Camera \
+    camera.tegra
+
+# Torch
+PRODUCT_PACKAGES += \
+        Torch
+
 # Polly
 PRODUCT_PACKAGES += \
 	pollyd \
 	Polly
 
-# Hostapd
+# WI-Fi
 PRODUCT_PACKAGES += \
-         calibrator \
-         hostapd_cli \
+         dhcpcd.conf \
+         hostapd.conf \
+         wifical.sh \
+         TQS_D_1.7.ini \
+         TQS_D_1.7_127x.ini \
+         crda \
+         regulatory.bin \
          hostapd \
+         hostapd_cli \
+         calibrator \
 	 iw
+
+# BlueZ test tools & Shared Transport user space mgr
+PRODUCT_PACKAGES += \
+         hciconfig \
+         hcitool
 
 # lights
 PRODUCT_PACKAGES += \
         lights.endeavoru
 
-# Power
+# Power HAL
 PRODUCT_PACKAGES += \
         power.endeavoru
 
@@ -144,14 +155,6 @@ PRODUCT_PACKAGES += \
 	audio.a2dp.default \
         libaudioutils \
         libtinyalsa
-
-# Common
-PRODUCT_PACKAGES += \
-	make_ext4fs \
-	setup_fs \
-	l2ping \
-	com.android.future.usb.accessory \
-	whisperd
 
 # NFC
 PRODUCT_PACKAGES += \
@@ -174,9 +177,12 @@ PRODUCT_PACKAGES += \
 	make_ext4fs \
 	setup_fs
 
-# Torch
+# Common
 PRODUCT_PACKAGES += \
-        Torch
+	make_ext4fs \
+	setup_fs \
+	l2ping \
+	com.android.future.usb.accessory
 
 # for bugmailer
 ifneq ($(TARGET_BUILD_VARIANT),user)
