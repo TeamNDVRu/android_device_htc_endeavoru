@@ -112,7 +112,8 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES := \
     Camera \
-    camera.tegra
+    camera.tegra \
+    surfaceflinger_client
 
 # Torch
 PRODUCT_PACKAGES += \
