@@ -148,8 +148,8 @@ PRODUCT_PACKAGES += \
         lights.endeavoru
 
 # Power HAL
-PRODUCT_PACKAGES += \
-        power.endeavoru
+#PRODUCT_PACKAGES += \
+#        power.endeavoru
 
 # Audio
 PRODUCT_PACKAGES += \
